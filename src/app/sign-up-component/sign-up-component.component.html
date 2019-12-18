@@ -1,0 +1,269 @@
+<div class="container-fluid bg-navy-blue">
+        <div class="row h-160 justify-content-center align-items-center m-0" style="margin-top:5% !important">
+            <div class="col-md-8">
+                <div class="card">
+                        <div class="card-header cutom-header">
+                                Sign-Up
+                              </div>
+                    <div class="card-body">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label> Name</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Name"
+                                            formControlName="name"
+                                            [(ngModel)]="registerDto.name"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('name').invalid &&
+                                                formField('name').touched &&
+                                                formField('name').errors.required
+                                            "
+                                        >
+                                             Name is required.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> Username</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Username"
+                                                formControlName="username"
+                                                [(ngModel)]="registerDto.username"
+                                            />
+                                            <span
+                                                class="pt-1 px-1 d-flex text-danger"
+                                                *ngIf="
+                                                    formField('username').invalid &&
+                                                    formField('username').touched &&
+                                                    formField('username').errors.required
+                                                "
+                                            >
+                                            Username is required.
+                                            </span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company name">State</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="State"
+                                            formControlName="state"
+                                            [(ngModel)]="registerDto.state"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('state').invalid &&
+                                                formField('state').touched &&
+                                                formField('state').errors.required
+                                            "
+                                        >
+                                            State is required.
+                                        </span> 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="admin name" class="col-form-label font-bold">City</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="City"
+                                            formControlName="city"
+                                            [(ngModel)]="registerDto.city"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('city').invalid &&
+                                                formField('city').touched &&
+                                                formField('city').errors.required
+                                            "
+                                        >
+                                        City is required.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company name" class="col-form-label font-bold">Address</label>
+                                        <textarea
+                                            rows="1"
+                                            class="form-control"
+                                            placeholder="Address"
+                                            formControlName="address"
+                                            [(ngModel)]="registerDto.address"
+                                        ></textarea>
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('address').invalid &&
+                                                formField('address').touched &&
+                                                formField('address').errors.required
+                                            "
+                                        >
+                                            Address is required.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="admin name" >Pincode</label>
+    
+                                        <input
+                                        type="text"
+                                        [(ngModel)]="registerDto.pincode"
+                                        class="form-control"
+                                        placeholder="Pincode"
+                                        formControlName="pincode"
+                                        maxlength="8"
+                                    />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('pincode').invalid &&
+                                                formField('pincode').touched &&
+                                                formField('pincode').errors.required
+                                            "
+                                        >
+                                            Pincode is required.
+                                        </span>
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                registerForm.controls.pincode.touched &&
+                                                (registerForm.controls.pincode.errors?.pattern ||
+                                                    registerForm.controls.pincode.errors?.minlength)
+                                            "
+                                            >PinCode isn't valid.!</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company name" class="col-form-label font-bold">Email id</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Email ID"
+                                            formControlName="emailId"
+                                            [(ngModel)]="registerDto.emailId"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('emailId').invalid &&
+                                                formField('emailId').touched &&
+                                                formField('emailId').errors.required
+                                            "
+                                        >
+                                            Email is required.
+                                        </span>
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                registerForm.controls.emailId.touched &&
+                                                registerForm.controls.emailId.errors?.pattern
+                                            "
+                                            >Email isn't valid.!</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="admin name" class="col-form-label font-bold">Password</label>
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                            placeholder="Password"
+                                            formControlName="password"
+                                            [(ngModel)]="registerDto.password"
+                                            minlength="6"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('password').invalid &&
+                                                formField('password').touched &&
+                                                formField('password').errors.required
+                                            "
+                                        >
+                                            Password is required.
+                                        </span>
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                registerForm.controls.password.touched &&
+                                                registerForm.controls.password.errors?.minlength
+                                            "
+                                            >Password must be 6 character.!</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company name" class="col-form-label font-bold">Contact Number</label>
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Contact Number"
+                                            formControlName="contactNo"
+                                            [(ngModel)]="registerDto.contactNumber"
+                                            maxlength="10"
+                                        />
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                formField('contactNo').invalid &&
+                                                formField('contactNo').touched &&
+                                                formField('contactNo').errors.required
+                                            "
+                                        >
+                                            Contact No. is required.
+                                        </span>
+                                        <span
+                                            class="pt-1 px-1 d-flex text-danger"
+                                            *ngIf="
+                                                registerForm.controls.contactNo.touched &&
+                                                (registerForm.controls.contactNo.errors?.pattern ||
+                                                    registerForm.controls.contactNo.errors?.minlength)
+                                            "
+                                            >Contact No. isn't valid.!</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group d-flex justify-content-center">
+                                <button type="submit" class="btn custom-btn-success" [disabled]="registerForm.invalid">Register</button>
+                            </div>
+                            <p class="font-bold text-center pt-2">
+                                Are you already registered ?
+                                <span class="text-green login-link"><u (click)="loginPage()">Login</u></span>
+                            </p>
+                        </form>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

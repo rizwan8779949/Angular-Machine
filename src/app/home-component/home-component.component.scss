@@ -1,0 +1,39 @@
+.dasboard-header{
+    font-size: 25px;
+    font-weight: normal;
+    padding-top: 26px;
+    text-align: center;
+}
+span .fa-sign-out{
+font-size: 20px;
+font-weight: bold;
+}
+.btn-floating-top-custom {
+    padding: 0px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    position: fixed;
+    top: 97px;
+    right: 85px;
+    background-color: #e56334;
+    color: white !important;
+    z-index: 2;
+    cursor: pointer;
+}
+  .fa-sign-out-alt{
+    line-height: 50px;
+    position: fixed;
+    top: 33px;
+    right: 96px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+   
+  .custom-plus {
+    position: relative;
+    font-size: 20px;
+    top: 2px;
+  }
