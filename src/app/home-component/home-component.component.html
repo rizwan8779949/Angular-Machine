@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="">
 <div class="dasboard-header">Welcome in Dashboard </div>
-<i class="fas fa-sign-out-alt" (click)="logOut()"></i>
+<span  (click)="logOut()">
+<i class="fas fa-sign-out-alt"></i></span>
 </div>
 <!-- <a class="btn-floating-top-custom" 
 >
@@ -12,8 +13,15 @@
         <!-- <input type="file" id="file" [hidden]="true" (change)="uploadProfileImage($event.target.files)"> -->
         <a class="btn-floating-top-custom" 
         >
-        <input type="file" id="file" [hidden]="true" (change)="uploadProfileImage($event)"><i class="fa fa-plus custom-plus"></i
+        <input input #file type="file" accept='.png,.jpg'  [hidden]="true" (change)="uploadProfileImage(file.files)"><i class="fa fa-plus custom-plus"></i
         ></a>
     </label>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 griding-system" *ngFor="let data of localImageGallery">
+            <div class="image-name">{{data.name}}</div>
+            <img src ="{{data.fileUrl}}" *ngIf="data.fileUrl" class="uploaded-image-url">
+        </div>
     </div>
 </div> 

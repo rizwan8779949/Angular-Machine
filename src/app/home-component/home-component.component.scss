@@ -16,8 +16,8 @@ font-weight: bold;
     text-align: center;
     line-height: 50px;
     position: fixed;
-    top: 97px;
-    right: 85px;
+    top: 20px; 
+    right: 175px;
     background-color: #e56334;
     color: white !important;
     z-index: 2;
@@ -36,4 +36,19 @@ font-weight: bold;
     position: relative;
     font-size: 20px;
     top: 2px;
+  }
+  .uploaded-image-url{
+    width: 435px;
+    height: 347px;
+
+  }
+  .griding-system{
+      margin-top:12px;
+      margin-bottom:12px;
+    //   margin-left: 5px;
+    //   margin-right: 5px;
+  }
+  .image-name{
+      font-size: 25px;
+      text-align: center;
   }

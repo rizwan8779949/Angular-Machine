@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home-component',
@@ -8,35 +9,45 @@ import { Router } from '@angular/router';
 })
 export class HomeComponentComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private toaster:ToastrService) { }
   fileToUpload;
-  localUrl
+  localUrl;
+  message;
+  imagePath;
+  imgURL;
+  localImageGallery=[];
+  transferFromLocalImageGallery;
   ngOnInit() {
+    if(localStorage.getItem("ImageGallery"))
+    this.localImageGallery=JSON.parse(localStorage.getItem("ImageGallery"))
   }
   logOut(){
-    // var txt;
-    // console.log("here is function ")
-    // if (confirm("Press a button!")) {
-    //   txt = "You pressed OK!";
-    // } else {
-    //   txt = "You pressed Cancel!";
-    // }
-    // document.getElementById("demo").innerHTML = txt;
-    localStorage.removeItem("token")
-    this.router.navigateByUrl("login")
+    if (confirm("Are you sure?") == true) {
+      localStorage.removeItem("token")
+      this.router.navigateByUrl("login")
+  } 
+  
   }
-  uploadProfileImage(event) {
-    if(event.target.files && event.target.files[0]){
-    var reader = new FileReader();
-            reader.onload = (event: any) => {
-                this.localUrl = event.target.result;
-                console.log("Local Url", event)
-            }
-            reader.readAsDataURL(event.target.files[0]);
-        }
-    // this.fileToUpload = files.item(0);
-    // const formData: FormData = new FormData();
-    // formData.append("file", this.fileToUpload, this.fileToUpload.name);
+  uploadProfileImage(files) {
+    console.log(files)
+    if (files.length === 0)
+    return;
+
+  var mimeType = files[0].type;
+  if (mimeType.match(/image\/*/) == null) {
+    this.message = "Only images are supported.";
+    return;
+  }
+
+  var reader = new FileReader();
+  this.imagePath = files;
+  reader.readAsDataURL(files[0]); 
+  reader.onload = (_event) => { 
+    this.localImageGallery.push({name:files[0].name,fileUrl:reader.result})
+    localStorage.setItem("ImageGallery",JSON.stringify(this.localImageGallery))
+    this.toaster.success("Successfully Uploaded")
+    // this.imgURL = reader.result; 
+  }
    
   }
 }
